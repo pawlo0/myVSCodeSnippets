@@ -1,205 +1,39 @@
 {
-  "simpleReactClassCompoment": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rcs",
-    "body": [
-      "class ${1:${TM_FILENAME_BASE}} extends React.Component {",
-      "\tconstructor(props) {",
-      "\t\tsuper(props)",
-      "\t\tthis.state = {",
-      "\t\t\t$2",
-      "\t\t}",
-      "\t}",
-      "\trender() {",
-      "\t\treturn (",
-      "\t\t\t<div>",
-      "\t\t\t\t$0",
-      "\t\t\t</div>",
-      "\t\t)",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "Creates a simple React component class"
-  },
-  "componentWillMount": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "cwm",
-    "body": ["componentWillMount() {", "\t$0", "}"],
-    "description": "ComponentWillMount inside component class"
-  },
-  "componentDidMount": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "cdm",
-    "body": ["componentDidMount() {", "\t$0", "}"],
-    "description": "ComponentDidMount inside component class"
-  },
-  "componentWillUpdate": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "cwup",
-    "body": ["componentWillUpdate() {", "\t$0", "}"],
-    "description": "ComponentWillUpdate inside component class"
-  },
-  "componentWillReceiveProps": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "cwr",
-    "body": ["componentWillReceiveProps(nextProps) {", "\t$0", "}"],
-    "description": "ComponentWillUpdate inside component class"
-  },
-  "componentDidUpdate": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "cdup",
-    "body": ["componentDidUpdate() {", "\t$0", "}"],
-    "description": "ComponentWillUpdate inside component class"
-  },
-  "shouldComponentUpdate": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "scu",
-    "body": ["shouldComponentUpdate(nextProps, nextState) {", "\t$0", "}"],
-    "description": "shouldComponentUpdate inside component class"
-  },
-  "handleChange": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rhc",
-    "body": [
-      "handleChange(e){",
-      "\tthis.setState({${1:input}: e.target.value});",
-      "}"
-    ],
-    "description": "handleChange method for set state for input fields"
-  },
-  "handleChangeInput": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rhci",
-    "body": [
-      "<input onChange={this.handleChange} value={this.state.${1:input}}/>"
-    ],
-    "description": "JSX for input fields with handleChange"
-  },
-  "reduxAction": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rxa",
-    "body": [
-      "const ${1:ACTION} = '${1:ACTION}';",
-      "",
-      "const ${2:actionFunction} = (${3:payload}) => {",
-      "\treturn {",
-      "\t\ttype: ${1:ACTION},",
-      "\t\t${3:payload}",
-      "\t}",
-      "};",
-      ""
-    ],
-    "description": "Redux Action"
-  },
-  "reduxReducerArray": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rxra",
-    "body": [
-      "const ${1:name}Reducer = (state = [], { type, ${3:payload} }) => {",
-      "\tswitch (type) {",
-      "\t\tcase ${4:ACTION}:",
-      "\t\t\treturn [ ...state, ${3:payload} ]",
-      "\t\tdefault:",
-      "\t\t\treturn state",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "Redux Reducer with state being an Array"
-  },
-  "reduxReducerObject": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rxro",
-    "body": [
-      "const ${1:name}Reducer = (state = {}, { type, payload }) => {",
-      "\tswitch (type) {",
-      "\t\tcase ${4:ACTION}:",
-      "\t\t\treturn { ...state, ...payload }",
-      "\t\tdefault:",
-      "\t\t\treturn state",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "Redux Reducer with state being an Object"
-  },
-  "reduxCreateStore": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rxstore",
-    "body": "const store = Redux.createStore(${1:name}Reducer);",
-    "description": "Redux Create Store"
-  },
-  "mapStateToProps_and_mapDispatchToProps": {
-    "scope": "javascript, javascriptreact",
-    "prefix": "rmap",
-    "body": [
-      "const mapStateToProps = (state) => {",
-      "\treturn {${1:payload}s: state}",
-      "};",
-      "",
-      "const mapDispatchToProps = (dispatch) => {",
-      "\treturn {",
-      "\t\t${2:objectActionName}: (${1:payload}) => dispatch(${3:ActionFunction}(${1:payload}))",
-      "\t}",
-      "};",
-      "",
-      "const Provider = ReactRedux.Provider;",
-      "const connect = ReactRedux.connect;",
-      "",
-      "const Container = connect(mapStateToProps, mapDispatchToProps)(${4:MyComponent})",
-      "",
-      "class AppWrapper extends React.Component {",
-      "\trender() {",
-      "\t\treturn (",
-      "\t\t\t<Provider store={store}>",
-      "\t\t\t\t<Container />",
-      "\t\t\t</Provider>",
-      "\t\t);",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "Connect Redux to React by mapStateToProps and mapDispatchToProps"
-  },
-  "reactDOM": {
-    "scope": "javascript,javascriptreact",
-    "prefix": "rdom",
-    "body": "ReactDOM.render(<${1:AppWrapper} />,document.getElementById('${2:App}'));",
-    "description": "Redux DOM Render"
-  },
-  "constFunctionSimple": {
-    "prefix": "rfuncs",
-    "body": ["const ${1:name} = (${2:props}) => (", "  ${3}", ")", ""],
-    "description": "Creates a named function in ES7 syntax for React without return"
-  },
-  "namedFunction": {
-    "prefix": "rfunc",
-    "body": [
-      "const ${1:name} = (${2:props}) => {",
-      "\treturn (",
-      "\t\t${3}",
-      "\t)",
-      "}",
-      ""
-    ],
-    "description": "Creates a named function in ES7 syntax for React"
-  },
-  "exportDefaultFunctionSimple": {
-    "prefix": "edfs",
-    "body": ["export default (${1:props}) => (", "  $0", ")", ""],
-    "description": "Export default function in ES7 syntax for React"
-  },
-  "exportDefaultFunction": {
-    "prefix": "edf",
-    "body": [
-      "export default (${1:params}) => {",
-      "\treturn (",
-      "\t\t$0",
-      "\t)",
-      "}",
-      ""
-    ],
-    "description": "Export default function in ES7 syntax for React"
-  }
+    "import": {
+        "prefix": "imp",
+        "body": "import ${1:moduleName} from '${2:module}';$0"
+    },
+    "exportDefault": {
+        "prefix": "exp",
+        "body": "export default $1$0"
+    },
+    "import React": {
+        "prefix": "imr",
+        "body": [
+            "import React from 'react'",
+            ""
+        ]
+    },
+    "import ReactDOM": {
+        "prefix": "imrd",
+        "body": [
+            "import ReactDOM from 'react-dom'",
+            ""
+        ]
+    },
+    "reactArrowFunctionComponent": {
+        "prefix": "rafc",
+        "body": [
+            "import React from 'react'",
+            "",
+            "const ${1:${TM_FILENAME_BASE}} = (${2:props}) => (",
+            "\t<div>",
+            "\t\t$0",
+            "\t</div>",
+            ")",
+            "",
+            "export default ${1:${TM_FILENAME_BASE}}"
+        ],
+        "description": "Creates a React Arrow Function Component with ES7 module system"
+    }
 }
