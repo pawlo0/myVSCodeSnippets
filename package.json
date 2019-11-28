@@ -3,6 +3,8 @@
   "displayName": "myVSCodeSnippets",
   "description": "Just my personal most used snippets",
   "version": "0.0.1",
+  "publisher": "pawlo0",
+  "repository": "https://github.com/pawlo0/myVSCodeSnippets",
   "engines": {
     "vscode": "^1.40.0"
   },
