@@ -1,39 +1,73 @@
 {
-    "import": {
-        "prefix": "imp",
-        "body": "import ${1:moduleName} from '${2:module}';$0"
-    },
-    "exportDefault": {
-        "prefix": "exp",
-        "body": "export default $1$0"
-    },
-    "import React": {
-        "prefix": "imr",
-        "body": [
-            "import React from 'react'",
-            ""
-        ]
-    },
-    "import ReactDOM": {
-        "prefix": "imrd",
-        "body": [
-            "import ReactDOM from 'react-dom'",
-            ""
-        ]
-    },
-    "reactArrowFunctionComponent": {
-        "prefix": "rafc",
-        "body": [
-            "import React from 'react'",
-            "",
-            "const ${1:${TM_FILENAME_BASE}} = (${2:props}) => (",
-            "\t<div>",
-            "\t\t$0",
-            "\t</div>",
-            ")",
-            "",
-            "export default ${1:${TM_FILENAME_BASE}}"
-        ],
-        "description": "Creates a React Arrow Function Component with ES7 module system"
-    }
+  "import": {
+    "prefix": "imp",
+    "body": "import ${1:moduleName} from '${2:module}';$0"
+  },
+  "exportDefault": {
+    "prefix": "exp",
+    "body": "export default $1$0"
+  },
+  "import React": {
+    "prefix": "imr",
+    "body": ["import React from 'react'", ""]
+  },
+  "import ReactDOM": {
+    "prefix": "imrd",
+    "body": ["import ReactDOM from 'react-dom'", ""]
+  },
+  "reactArrowFunctionComponent": {
+    "prefix": "rafc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = (${2:props}) => (",
+      "\t<div>",
+      "\t\t$0",
+      "\t</div>",
+      ")",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}"
+    ],
+    "description": "Creates a React Arrow Function Component"
+  },
+  "reactClassComponent": {
+    "prefix": "rcc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends React.Component {",
+      "\trender(){",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}"
+    ],
+    "description": "Creates a React Class Component"
+  },
+  "reactClassComponentWithState": {
+    "prefix": "rcs",
+    "body": [
+      "import React from 'react'",
+      "",
+      "class ${1:${TM_FILENAME_BASE}} extends React.Component {",
+      "\tstate = {${2:key}: ${3:value}}",
+      "\t",
+      "\trender(){",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}"
+    ],
+    "description": "Creates a React Class Component with state initialization"
+  }
 }
